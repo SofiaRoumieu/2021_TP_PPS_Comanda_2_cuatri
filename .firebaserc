@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "loginionic-34eb8": {
+      "hosting": {
+        "app": [
+          "loginionic-34eb8"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+	"appId": "io.ionic.solso",
+	"appName": "CargaUsuarios",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 2950
+		}
+	}
+}

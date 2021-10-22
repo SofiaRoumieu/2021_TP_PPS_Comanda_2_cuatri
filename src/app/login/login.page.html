@@ -1,0 +1,30 @@
+<ion-content class="container">
+  <div style="align-content: center;">
+    <img src="../../assets/imagenes/comida.png" style=  "  padding-top:50px ; width:200px ; margin: auto 103px; margin-bottom: 133px;"  >
+  </div>
+
+  <div class="login-content">
+    <form action="index.html" >
+      <h2 class="title">Bienvenido</h2>
+             <div class="input-div one">
+                <div class="i">
+                <ion-icon name="mail-outline" color="dark"></ion-icon>
+                </div>
+                <div class="div">
+                  <ion-input  [(ngModel)]="email" type = "text" name = "nEmail" placeholder="Correo"> </ion-input>
+                </div>
+             </div>
+             <div class="input-div pass">
+                <div class="i">
+                <ion-icon name="lock-closed-outline" color="dark"></ion-icon>
+                </div>
+                <div class="div">
+                  <ion-input [(ngModel)]="password" type = "password"  name = "nPassword" placeholder="Contraseña"> </ion-input>
+               </div>
+            </div>
+            <input type="submit" class="btn" value="Iniciar Sesión" (click)="login()">
+            <input type="button" class="btn" value="Limpiar" (click)="limpiar()">
+            <p>No tienes una cuenta?<a (click)="movernos()" style="cursor: pointer;" >Registrarse</a></p>
+          </form>
+      </div>
+</ion-content>

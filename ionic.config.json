@@ -1,0 +1,8 @@
+{
+  "name": "probando",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
