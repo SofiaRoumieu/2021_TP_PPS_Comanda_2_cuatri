@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'splash',
+    redirectTo: 'altas-producto',
     pathMatch: 'full'
   },
   {
@@ -26,7 +26,12 @@ const routes: Routes = [
   {
     path: 'altas-empleados',
     loadChildren: () => import('./altas/altas-empleados/altas-empleados.module').then( m => m.AltasEmpleadosPageModule)
+  },
+  {
+    path: 'altas-producto',
+    loadChildren: () => import('./altas/altas-producto/altas-producto.module').then( m => m.AltasProductoPageModule)
   }
+
 ];
 @NgModule({
   imports: [

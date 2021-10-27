@@ -19,6 +19,7 @@ import { Camera } from '@ionic-native/camera/ngx';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    AngularFirestoreModule,
     ReactiveFormsModule,
     FormsModule,
     AngularFirestoreModule

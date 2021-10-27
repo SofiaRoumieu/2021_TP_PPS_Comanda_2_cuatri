@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Alta Productos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="ver">
+    <img src="assets/loading-11.gif" alt="100px">
+  </div>
+  <ion-item>
+    <ion-label position="floating">Nombre </ion-label>
+    <ion-input  [disabled]="ver" name="name" type="text" placeholder="" [(ngModel)]="nombre" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-input [disabled]="ver" type="text" placeholder="" [(ngModel)]="descripcion" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Tiempo promedio de elavoración</ion-label>
+    <ion-input [disabled]="ver"  type="text" placeholder="" [(ngModel)]="tiempo" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Precio</ion-label>
+    <ion-input [disabled]="ver"  type="number" placeholder="" [(ngModel)]="precio" required></ion-input>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+    <ion-col size="4" *ngFor="let photo of photoService.img; index as position">
+      <ion-img [src]="photo" (click)="showActionSheet(photo, position)"></ion-img>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button  size="large" (click)="presentActionSheetCamera()">
+    <ion-icon name="camera"></ion-icon>
+  </ion-button>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-button [disabled]="ver"  size="large" (click)="registrar()"  expand="block">registrar</ion-button>
+  </ion-fab>
+  
+  <div>
+    
+  </div>
+</ion-content>
