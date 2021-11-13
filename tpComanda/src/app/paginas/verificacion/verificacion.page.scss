@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: black;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.mensaje {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-radius: 1rem;
+  -webkit-box-shadow: -2px 7px 29px 6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 7px 29px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px 7px 29px 6px rgba(0, 0, 0, 0.75);
+}
+.botones {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

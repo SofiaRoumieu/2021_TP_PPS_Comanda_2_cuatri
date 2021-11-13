@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Mi pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style=" --background:white;">
+  <ion-card *ngIf="pedido">
+    <ion-item-group style="margin-top: 1rem; margin-bottom: 4rem;">
+      <ion-card-title style="text-align: center;"> <strong style="color: rgb(239, 255, 13);">{{pedido.estado | estado}}</strong> </ion-card-title>
+      <ion-item>
+        <ion-label>Mesa N° {{pedido.mesa}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Descuento: {{pedido.descuento | descuento}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label >Total: <strong style="color: rgb(33, 199, 33);">${{pedido.total}}</strong> </ion-label>
+      </ion-item>
+    </ion-item-group>
+  </ion-card>
+<ion-card *ngIf="pedido">
+    <ion-card-content>
+      <ion-list>
+        <ion-card-title>Detalle de orden:</ion-card-title>
+        <ion-item *ngFor="let plato of pedido.platos">
+          <ion-avatar slot="start">
+            <img src={{plato.img1}}>
+          </ion-avatar>
+          <ion-label>
+            <h3>{{plato.nombre}}</h3>
+            <p>{{plato.descripcion}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <div class="botones">
+      <ion-button *ngIf="pedido.estado === 3" (click)='llegoPedido(pedido)'>Llegó pedido</ion-button>
+      <ion-button *ngIf="pedido.estado === 4" (click)='openModal("cuenta")'>Pedir cuenta</ion-button>
+      <ion-button *ngIf="pedido.estadoEncuesta === 0 && pedido.estado === 4" (click)='openModal("encuesta")'>Encuesta</ion-button>
+      <ion-button *ngIf="pedido.descuento === 0 && pedido.estado !== 6 && pedido.estado !== 5" (click)='openModal("juego")'>Juego</ion-button>
+      <ion-button *ngIf="pedido.estado === 6" (click)='salir()'>Retirarse</ion-button>
+
+    </div>
+  </ion-card>
+
+
+</ion-content>

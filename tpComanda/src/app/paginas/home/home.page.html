@@ -1,0 +1,142 @@
+<ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary" translucent>
+      <ion-title >Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="menu" >
+    <ion-list>
+      <ion-item>
+        <ion-icon color="primary" name="home" slot="start"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.perfil === 'admin'" (click)='ruteador("lista-autorizar")'>
+        <ion-icon color="tertiary"  name="people-outline" slot="start"></ion-icon>
+        <ion-label>Usuarios pendientes</ion-label>
+      </ion-item>
+      <!-- <ion-item (click)='ruteador("registroAdm")'>
+        <ion-icon color="success" name="person-add-outline" slot="start"></ion-icon>
+        <ion-label>Alta Dueño/Supervisor</ion-label>
+      </ion-item> -->
+      <ion-item *ngIf="user.perfil === 'cocinero' || user.perfil === 'bar'" (click)='ruteador("registroPlato")'>
+        <ion-icon color="danger" name="fast-food-outline" slot="start"></ion-icon>
+        <ion-label>Alta de Platos y Bebidas</ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.perfil === 'Cliente'" (click)='ruteador("menu")'>
+        <ion-icon color="warning" name="fast-food-outline" slot="start"></ion-icon>
+        <ion-label>Menu</ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.perfil === 'Cliente'" (click)='ruteador("pedido")'>
+        <ion-icon color="success" name="fast-food-outline" slot="start"></ion-icon>
+        <ion-label>Mi Pedido</ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.perfil === 'mozo'" (click)='ruteador("chats")'>
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-label>Consultas</ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.perfil === 'mozo' || user.perfil ==='admin'" (click)='ruteador("lista-pedidos")'>
+        <ion-icon color="danger" name="fast-food-outline" slot="start"></ion-icon>
+        <ion-label>Pedidos pendientes</ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.perfil === 'cocinero' || user.perfil ==='bar'" (click)='ruteador("lista-pedidos-cocina")'>
+        <ion-icon color="danger" name="fast-food-outline" slot="start"></ion-icon>
+        <ion-label>Pedidos en cocina</ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.perfil === 'mozo' || user.perfil === 'admin'"  (click)='ruteador("lista-pedidos-mozo")'>
+        <ion-icon color="success" name="fast-food-outline" slot="start"></ion-icon>
+        <ion-label>Pedidos a entregar</ion-label>
+      </ion-item>
+      <ion-item *ngIf="user.perfil === 'mozo' || user.perfil === 'admin'" (click)='ruteador("lista-cobros")'>
+        <ion-icon color="danger" name="fast-food-outline" slot="start"></ion-icon>
+        <ion-label>Pedidos a cobrar</ion-label>
+      </ion-item>
+      <!-- <ion-item>
+        <ion-icon color="success" name="person-add-outline" slot="start"></ion-icon>
+        <ion-label>Alta Empleado</ion-label>
+      </ion-item> -->
+      <!-- <ion-item (click)='ruteador("registroMesa")'>
+        <ion-icon color="warning" name="restaurant-outline" slot="start"></ion-icon>
+        <ion-label>Alta Mesa</ion-label>
+      </ion-item> -->
+      <ion-item *ngIf="user.perfil === 'mozo' || user.perfil === 'admin'" (click)='ruteador("lista-pendientes")'>
+        <ion-icon color="danger"  name="people-outline" slot="start"></ion-icon>
+        <ion-label>Clientes en espera</ion-label>
+      </ion-item>
+      <ion-item (click)="logut()">
+        <ion-icon name="log-out-outline"  slot="start"></ion-icon>
+        <ion-label>Salir</ion-label>
+      </ion-item>
+    </ion-list>
+    <img style="margin-top: 3rem;" src="../../../assets/img/menu.png" alt="">
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header >
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>La Comanda</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="fondo">
+    <div class="container">
+
+      <div *ngIf="user.perfil === 'mozo'" class="cards" (click)='ruteador("lista-pedidos")' >
+        <ion-label class="label">Pedidos pendientes</ion-label>
+        <img  style="width: 100%; height: 100%;"  src="../../../assets/img/pedido.png" alt="">
+      </div>
+
+      <div *ngIf="user.perfil === 'mozo'" class="cards" (click)='ruteador("lista-pedidos-mozo")' >
+        <ion-label class="label">Pedidos a entregar</ion-label>
+        <img  style="width: 100%; height: 100%;"  src="../../../assets/img/pedidoListo.png" alt="">
+      </div>
+
+      <div *ngIf="user.perfil === 'mozo'" class="cards" (click)='ruteador("lista-pendientes")'>
+        <ion-label class="label">Clientes en Espera</ion-label>
+       <img style=" width: 100%; height: 100%;" src="../../../assets/img/fila.jpg" alt="">
+      </div>
+
+      <div *ngIf="user.estado === 1 && user.perfil === 'Cliente'" class="cards" (click)="ingresar()">
+        <ion-label class="label">Pedir Mesa</ion-label>
+       <img style=" width: 100%; height: 100%;" src="../../../assets/img/menu.png" alt="">
+      </div>
+      <div *ngIf="user.estado === 4 && user.perfil === 'Cliente'" class="cards" (click)="verEstadoPedido()">
+        <ion-label class="label">Estado Pedido</ion-label>
+       <img style=" width: 100%; height: 100%;" src="../../../assets/img/menu.png" alt="">
+      </div>
+      <div *ngIf="user.estado === 3 && user.perfil === 'Cliente'" class="cards" (click)="sentarse()">
+        <ion-label class="label">Sentarse en la mesa</ion-label>
+        <img style=" width: 100%; height: 100%;" src="../../../assets/img/reserva.jpg" alt="">
+       </div>
+
+
+      <div *ngIf="user.perfil === 'cocinero'" class="cards" (click)='ruteador("lista-pedidos-cocina")'>
+        <ion-label class="label">Pedidos Cocina</ion-label>
+       <img style=" width: 100%; height: 100%;" src="../../../assets/img/menu.png" alt="">
+      </div>
+
+
+      <div *ngIf="user.perfil === 'admin'" class="cards" (click)='ruteador("lista-autorizar")'>
+        <ion-label class="label">Clientes a Ingresar</ion-label>
+       <img style=" width: 100%; height: 100%;" src="../../../assets/img/usuario.jpg" alt="">
+      </div>
+
+      <div *ngIf="user.perfil === 'bar'" class="cards" (click)='ruteador("lista-pedidos-cocina")'>
+        <ion-label class="label">Pedidos Bar</ion-label>
+       <img style=" width: 100%; height: 100%;" src="../../../assets/img/birra.jpg" alt="">
+      </div>
+
+       <!-- <div (click)="prueba()" style="background-color: rgb(141, 31, 31); height: auto;" *ngIf="user.estado == 2" class="cards" >
+          <h2 style="color: white; font-size: 3rem;">Por favor Aguarde hasta que se le sea asignada una mesa.</h2>
+       </div> -->
+       <div (click)="prueba()" style="background-color: rgb(141, 31, 31); height: auto;" *ngIf="user.estado === 2" class="cards" >
+        <h2 style="color: white; font-size: 3rem;">Por favor Aguarde hasta que se le sea asignada una mesa.</h2>
+     </div>
+
+
+    </div>
+    <!-- <ion-button expand="block" onclick="openMenu()">Open Menu</ion-button> -->
+  </ion-content>
+</div>

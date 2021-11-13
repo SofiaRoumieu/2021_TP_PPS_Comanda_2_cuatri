@@ -1,0 +1,45 @@
+.send {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.mensaje {
+  width: 80%;
+  height: auto;
+  margin-left: 2%;
+  overflow: auto;
+  color: black;
+  background-color: white;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  margin-bottom: 3rem;
+  border-radius: 0px 35px 35px 35px;
+  -moz-border-radius: 0px 35px 35px 35px;
+  -webkit-border-radius: 0px 35px 35px 35px;
+  border: 0px solid #000000;
+  -webkit-box-shadow: 10px 10px 24px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 24px -9px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 24px -9px rgba(0, 0, 0, 0.75);
+}
+
+.respuesta {
+  margin-left: 18%;
+  background-color: #d2f3c8;
+  border-radius: 30px 0px 29px 29px;
+  -moz-border-radius: 30px 0px 29px 29px;
+  -webkit-border-radius: 30px 0px 29px 29px;
+  border: 0px solid #000000;
+}
+.mensajes {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  align-content: flex-end;
+}
+.tarj {
+  display: flex;
+  justify-content: flex-end;
+}

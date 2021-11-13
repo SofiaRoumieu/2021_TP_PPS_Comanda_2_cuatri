@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start" (click)='closeModal()'>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title text-center>Detalle cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:white" >
+  <div class="centrar">
+
+    <ion-toolbar  class="centrar" style="margin-top: 2rem; --background:black; margin-bottom: 1rem; width: 80%;">
+      <ion-title style="text-align: center;margin-top: 1rem;"> <strong style="color: rgb(10, 173, 202);"> Detalle</strong> </ion-title>
+
+      <ion-card *ngIf="pedido">
+        <ion-item-group>
+          <form [formGroup]="form" >
+            <ion-item class="full-width-input">
+              <ion-label position='floating'>Atencion</ion-label>
+              <ion-select formControlName="atencion" (ionChange)="subtotal()">
+                <!-- (selectionChange)="seleccionUsuario()" -->
+                <ion-select-option *ngFor="let atencion of atenciones" [value]="atencion.value">
+                  {{atencion.viewValue}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </form>
+          <ion-item-divider></ion-item-divider>
+          <ion-item>
+            <ion-label>Mesa: {{pedido.mesa}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Total: <strong style="color: rgb(19, 139, 219);">${{pedido.total}}</strong> </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Propina: <strong style="color: rgb(247, 243, 43);">${{form.value.atencion}}</strong> </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Descuento: <strong style="color: rgb(196, 15, 15);">{{pedido.descuento | descuentoComponente}}</strong> </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label> Final: <strong style="color: rgb(39, 185, 39);">${{subMonto}}</strong> </ion-label>
+          </ion-item>
+        </ion-item-group>
+
+        <ion-card-content>
+          <ion-list>
+            <ion-card-title>Orden:</ion-card-title>
+            <ion-item *ngFor="let plato of pedido.platos">
+              <ion-avatar slot="start">
+                <img src={{plato.img1}}>
+              </ion-avatar>
+              <ion-label>
+                <h3>{{plato.nombre}}</h3>
+                <p>{{plato.descripcion}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+        <div class="centrar">
+
+          <ion-button style="width: 50%;" [disabled]="!form.value" color='secondary'  (click)="pedirCuenta()">Pedir cuenta</ion-button>
+        </div>
+      </ion-card>
+    </ion-toolbar>
+  </div>
+</ion-content>

@@ -1,0 +1,87 @@
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+.modal-content {
+  background-color: #131212;
+  margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  border-radius: 2rem;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.img {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 10rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.contImg {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  color: #000;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+button {
+  margin-bottom: 2rem;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+.fecha {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.mensaje {
+  width: 80%;
+  height: auto;
+  overflow: auto;
+  padding-left: 2rem;
+  margin-bottom: 3rem;
+  border-radius: 0px 35px 35px 35px;
+  -moz-border-radius: 0px 35px 35px 35px;
+  -webkit-border-radius: 0px 35px 35px 35px;
+  border: 0px solid #000000;
+  -webkit-box-shadow: 10px 10px 24px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 24px -9px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 24px -9px rgba(0, 0, 0, 0.75);
+}
+#respuesta {
+  margin-left: 18%;
+  background-color: #d2f3c8;
+  border-radius: 30px 0px 29px 29px;
+  -moz-border-radius: 30px 0px 29px 29px;
+  -webkit-border-radius: 30px 0px 29px 29px;
+  border: 0px solid #000000;
+}

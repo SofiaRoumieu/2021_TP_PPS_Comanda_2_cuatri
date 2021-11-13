@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Pedidos Pendientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  style="--background:white">
+
+  <ion-item  *ngFor="let item of lista" style="--background:white; color:black;margin-top: 2rem;">
+    <ion-avatar slot="start">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXmfQIhnqTHQrptQZ1YwEka2EjCvB9UjBR3A&usqp=CAU">
+
+    </ion-avatar>
+    <ion-label>
+      Mesa: {{item.mesa}}
+      <p>Ordenes: {{item.platos.length}}</p>
+      <p>Importe: {{item.total}}</p>
+    </ion-label>
+    <ion-button (click)="tomarPedido(item)" color="success"><ion-icon name="checkmark-circle-outline"></ion-icon></ion-button>
+  </ion-item>
+  <div *ngIf="lista.length === 0" style="display: flex; flex-direction: column; text-align: center; height: 100%; align-content: center;  flex-wrap: wrap; justify-content: center; font-family:Georgia, 'Times New Roman', Times, serif; opacity: 0.6;">
+    <div>
+      <h1 style="color: black;">No hay pedidos en espera</h1>
+
+    </div>
+  </div>
+</ion-content>

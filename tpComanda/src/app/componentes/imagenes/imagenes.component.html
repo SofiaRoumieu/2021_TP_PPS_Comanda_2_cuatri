@@ -1,0 +1,36 @@
+<div *ngIf="mostrar"  id="id01" class="modal ">
+  <form class="modal-content animate ld ld-zoom-in" >
+    <span style="margin-bottom: 2rem;" (click)="cerrar()" class="close" title="Close Modal">×</span>
+    <div  style="margin-top: 3rem; margin-bottom: 2rem;" class="container">
+
+        <div style="margin-top: 2rem;">
+                <!-- <div  style="text-align: center; width: 100%; justify-content: center; font-family:'Times New Roman', Times, serif;">
+
+                    <h1 style="color: hsl(336, 78%, 43%);">Detalle Turno</h1>
+
+                  </div> -->
+                  <div  class="contImg">
+                    <div class="img">
+                      <img style="height: 100%; width: 100%;" [src]="user.img1" alt="">
+
+                    </div>
+
+                    <div class="img">
+                      <img style="height: 100%; width: 100%;" [src]="user.img2" alt="">
+                    </div>
+
+                    <div class="img">
+                      <img style="height: 100%; width: 100%;" [src]="user.img3" alt="">
+
+                    </div>
+
+                  </div>
+                      <div style="display:flex; flex-direction: column; width: 100%; justify-content: center; align-content: center; align-items: center;">
+                        <ion-button color="danger" (click)="cerrar()">Cerrar</ion-button>
+                      </div>
+
+        </div>
+
+    </div>
+  </form>
+</div>

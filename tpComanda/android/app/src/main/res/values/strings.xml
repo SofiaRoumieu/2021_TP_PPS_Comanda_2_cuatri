@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">TpComandaApp</string>
+    <string name="title_activity_main">TpComandaApp</string>
+    <string name="package_name">com.comandaionic.tpcomandaapp</string>
+    <string name="custom_url_scheme">com.comandaionic.tpcomandaapp</string>
+</resources>

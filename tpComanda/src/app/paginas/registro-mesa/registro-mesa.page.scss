@@ -1,0 +1,25 @@
+.tarj {
+  --background: black;
+  -webkit-box-shadow: 10px 26px 55px -16px rgba(13, 13, 13, 1);
+  -moz-box-shadow: 10px 26px 55px -16px rgba(13, 13, 13, 1);
+  box-shadow: 10px 26px 55px -16px rgba(13, 13, 13, 1);
+}
+.fondo {
+  --background: white;
+}
+ion-content ion-toolbar {
+  border-radius: 10px;
+  width: 88%;
+  text-align: center;
+  margin: auto;
+  padding: 19px;
+
+  // margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  --background: white;
+}

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Solicitud Rechazada</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:white; text-align: center;">
+
+  <ion-card  style="text-align: center; --background:rgb(161, 13, 13);">
+    <div style="background-color: white; border-radius: 100%;">
+      <img src="../../../assets/img/error.png"/>
+
+    </div>
+    <ion-card-content>
+      <ion-card-title>
+
+      </ion-card-title>
+      <h1 style="font-family:Georgia, 'Times New Roman'; color:white">
+       Solicitud de Ingreso.
+      </h1>
+    </ion-card-content>
+  </ion-card>
+  <div style="margin-top: 2rem;">
+    <h2 style="color:black; margin-left: 2rem;margin-right: 2rem; font-family:Georgia, 'Times New Roman', Times, serif"> No podrá ingresar al Sistema debido a que su Solicitud de Ingreso fue <strong>Rechazada</strong>.</h2>
+  </div>
+
+  <ion-button style="width: 80%; margin-top: 3rem;" color="success" (click)="loguearse()">Regresar</ion-button>
+
+</ion-content>

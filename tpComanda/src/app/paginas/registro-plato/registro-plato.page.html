@@ -1,0 +1,83 @@
+<ion-header >
+  <ion-toolbar  color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Registro Plato y Bebida</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content style="--background:white">
+  <ion-toolbar class="tarj" style="margin-top: 5rem;">
+    <ion-title>Comida</ion-title>
+    <br>
+    <form [formGroup]="form" >
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Nombre</ion-label>
+        <ion-input type="text" formControlName="nombre"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Descripcion</ion-label>
+        <ion-input type="text" formControlName="descripcion"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Precio</ion-label>
+        <ion-input type="number" formControlName="precio"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Tipo</ion-label>
+        <ion-input type="text" formControlName="tipo" value="Bebida" readonly></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="full-width-input">
+        <div class="fotos">
+          <div style="width: 70%;">
+            <ion-label position='floating'>Foto 1: </ion-label>
+            <ion-input type="text" formControlName="img1" readonly></ion-input>
+
+          </div>
+          <div class="botonCamera">
+            <ion-button style="width: 50%;" color='secondary' (click)="tomarFoto('img1')"><ion-icon name="camera-outline"></ion-icon></ion-button>
+          </div>
+
+        </div>
+      </ion-item>
+      <br>
+      <ion-item class="full-width-input">
+        <div class="fotos">
+          <div style="width: 70%;">
+            <ion-label position='floating'>Foto 2: </ion-label>
+            <ion-input type="text" formControlName="img2" readonly></ion-input>
+
+          </div>
+          <div class="botonCamera">
+            <ion-button style="width: 50%;" color='secondary' (click)="tomarFoto('img2')"><ion-icon name="camera-outline"></ion-icon></ion-button>
+
+          </div>
+        </div>
+      </ion-item>
+      <br>
+      <ion-item class="full-width-input">
+        <div class="fotos">
+          <div style="width: 70%;">
+            <ion-label position='floating'>Foto 3: </ion-label>
+            <ion-input type="text" formControlName="img3" readonly></ion-input>
+
+          </div>
+          <div class="botonCamera">
+            <ion-button style="width: 50%;" color='secondary' (click)="tomarFoto('img3')"><ion-icon name="camera-outline"></ion-icon></ion-button>
+
+          </div>
+        </div>
+      </ion-item>
+      <br>
+
+      <ion-button style="width: 50%;" [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando"  (click)="crear()">Crear</ion-button>
+    </form>
+  </ion-toolbar>
+</ion-content>

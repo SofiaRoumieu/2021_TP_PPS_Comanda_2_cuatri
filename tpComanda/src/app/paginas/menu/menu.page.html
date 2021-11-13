@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Listado de Platos</ion-list-header>
+    <ion-item *ngFor="let comida of listaComida">
+      <ion-avatar (click)="prueba(comida)" slot="start">
+        <img src={{comida.img1}}>
+      </ion-avatar>
+      <ion-label>
+        <h3>{{comida.nombre}}</h3>
+        <p>{{comida.descripcion}}</p>
+        <p>${{comida.precio}}</p>
+      </ion-label>
+      <ion-button color="success" (click)='agregar(comida)'><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>Listado de Bebidas</ion-list-header>
+    <ion-item *ngFor="let bebida of listaBebida">
+      <ion-avatar (click)="prueba(bebida)" slot="start">
+        <img src={{bebida.img1}}>
+      </ion-avatar>
+      <ion-label>
+        <h3>{{bebida.nombre}}</h3>
+        <p>{{bebida.descripcion}}</p>
+        <p>${{bebida.precio}}</p>
+      </ion-label>
+      <ion-button color="success" (click)='agregar(bebida)'><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<app-imagenes  [mostrar]="mostrar" [user]="plato" (eventoMostrarModal)="cerrar($event)"></app-imagenes>
+
+<div style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-bottom: 2rem;">
+  <ion-button (click)='openModal("consulta")' color="success" style="width: 80%;">Consultar Mozo</ion-button>
+
+</div>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar >
+    <ion-title (click)='openModal("pedido")'>Ver pedido - ({{items.length}}) items - Total: ${{total}}</ion-title>
+  </ion-toolbar>
+</ion-footer>

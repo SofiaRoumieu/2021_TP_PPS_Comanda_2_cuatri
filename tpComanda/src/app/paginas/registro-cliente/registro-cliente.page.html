@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Registro de Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:white">
+  <ion-button (click)="leerDni()" style="width: 5rem; height: 5rem;margin-top: 1rem; margin-bottom: 1rem;"><ion-icon style="width: 100%; height: 100%; " name="qr-code"></ion-icon></ion-button>
+    <ion-toolbar  class="tarj" style="margin-top: 9rem; --background:black; margin-bottom: 7rem;">
+      <ion-title>Datos</ion-title>
+      <br>
+      <form [formGroup]="form" >
+        <ion-item class="full-width-input">
+          <ion-label position='floating'>Nombre</ion-label>
+          <ion-input type="text" formControlName="nombre"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="full-width-input">
+          <ion-label position='floating'>Apellido</ion-label>
+          <ion-input type="text" formControlName="apellido"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="full-width-input">
+          <ion-label position='floating'>DNI</ion-label>
+          <ion-input type="text" formControlName="dni"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="full-width-input">
+          <ion-label position='floating'>Correo</ion-label>
+          <ion-input type="text" formControlName="mail"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="full-width-input">
+          <ion-label position='floating'>Contraseña</ion-label>
+          <ion-input type="password" formControlName="clave"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="full-width-input">
+          <ion-label position='floating'>CUIL</ion-label>
+          <ion-input type="text" formControlName="cuil"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="full-width-input">
+          <ion-label position='floating'>Foto: </ion-label>
+          <ion-input type="text" formControlName="img" readonly></ion-input>
+        </ion-item>
+        <ion-button style="width: 50%;" color='secondary' (click)="tomarFoto()">Foto</ion-button>
+        <br>
+
+
+        <ion-button style="width: 50%;" [disabled]="!form.value.img" [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando"  (click)="crear()">Registrarse</ion-button>
+        <!-- <ion-button [hidden]="!ocultarVerificar" color="secondary" *ngIf="logeando"  (click)="Entrar()"><i class="fa fa-spinner fa-spin"></i> Ingresando</ion-button> -->
+
+      </form>
+     <div>
+       <p>{{resultado}}</p>
+    </div>
+  </ion-toolbar>
+</ion-content>

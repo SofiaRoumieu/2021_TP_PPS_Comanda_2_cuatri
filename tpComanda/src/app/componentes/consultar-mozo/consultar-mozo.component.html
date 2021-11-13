@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start" (click)='closeModal()'>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title text-center>Consultas</ion-title>
+  </ion-toolbar>
+  </ion-header>
+  <ion-content style="--background:url('../../../assets/img/wsp.jpg')">
+    <ion-toolbar  class="tarj" style="margin-top: 20rem; --background:transparent; margin-bottom: 2rem;">
+
+      <form style="height: 100%;">
+
+
+        <div *ngIf=" consulta && usuario.perfil === 'Cliente' ">
+          <div  *ngFor="let item of consulta" class="mensajes">
+            <div *ngIf="item.consulta" id="respuesta" class="mensaje respuesta">
+
+             <label style="color: brown;"><strong> Mesa N° {{usuario.mesa.numero}}</strong></label>
+             <p>{{item.consulta}}</p>
+
+             <br>
+           </div>
+           <div *ngIf="item.respuesta" class="mensaje">
+
+             <label style="color: rgb(11, 11, 124);"><strong>Mozo</strong></label>
+             <p>{{item.respuesta}}</p>
+
+             <br>
+           </div>
+
+
+          </div>
+
+        </div>
+
+
+      </form>
+    </ion-toolbar>
+  </ion-content>
+  <ion-footer class="ion-no-border">
+    <ion-toolbar>
+      <div class="send">
+        <ion-input [(ngModel)]="mensaje" style="width: 80%; border-radius: 2rem;" type="text" placeholder="Escriba un mensaje"></ion-input><ion-button (click)="enviar()" color="primary"><ion-icon name="send-outline"></ion-icon></ion-button>
+
+      </div>
+    </ion-toolbar>
+  </ion-footer>

@@ -1,0 +1,52 @@
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+
+.example-header-image {
+  background-size: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-content {
+  margin: 2em auto;
+  text-align: center;
+}
+.tarj {
+  margin-top: 15rem;
+  --background: black;
+  -webkit-box-shadow: 10px 26px 55px -16px rgba(13, 13, 13, 1);
+  -moz-box-shadow: 10px 26px 55px -16px rgba(13, 13, 13, 1);
+  box-shadow: 10px 26px 55px -16px rgba(13, 13, 13, 1);
+  margin-bottom: 5rem;
+}
+
+.fotos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.botonCamera {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-content ion-toolbar {
+  border-radius: 10px;
+  width: 88%;
+  text-align: center;
+  margin: auto;
+  padding: 19px;
+
+  // margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}

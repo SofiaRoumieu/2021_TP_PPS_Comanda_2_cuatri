@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Chats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:white">
+
+  <ion-item (click)="openModal(item)"  *ngFor="let item of lista" style="--background:white; color:black;margin-top: 2rem;">
+    <ion-avatar slot="start">
+      <img *ngIf="item.usuario.img === undefined" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png">
+      <img *ngIf="item.usuario.img !== undefined" [src]="item.usuario.img">
+
+    </ion-avatar>
+    <ion-label>Mesa N° {{item.usuario.mesa.numero}}
+      <p>{{item.consulta}}</p>
+    </ion-label>
+    <ion-badge style="border-radius: 100%; width: 1rem;" color="success">1</ion-badge>
+    <!-- <ion-button (click)="autorizar(item)" color="success"><ion-icon name="checkmark-circle-outline"></ion-icon></ion-button>
+    <ion-button (click)="rechazar(item)" color="danger"><ion-icon name="close-outline"></ion-icon></ion-button> -->
+  </ion-item>
+  <div *ngIf="lista.length === 0" style="display: flex; flex-direction: column; text-align: center; height: 100%; align-content: center;  flex-wrap: wrap; justify-content: center; font-family:Georgia, 'Times New Roman', Times, serif; opacity: 0.6;">
+    <div>
+      <h1 style="color: black;">No hay consultas pendientes</h1>
+
+    </div>
+  </div>
+</ion-content>

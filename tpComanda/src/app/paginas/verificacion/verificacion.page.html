@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Verificación de Correo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:white">
+
+  <div class="container">
+
+    <div class="mensaje">
+      <h2>Muchas Gracias por Registrarte!</h2>
+     <p>Te hemos enviado un correo de confirmacion a <strong>{{this.email}}</strong></p>
+     <!-- <p>Te hemos enviado un email de confirmacion a <strong>prueba@gmail.com</strong></p> -->
+
+     <p>Por favor revise su correo e ingrese en la dirección de autenticación recibido.</p>
+     <div class="botones" >
+
+         <ion-button style="width: 40%;" color="success" (click)="loguearse()">Ingresar</ion-button>
+         <ion-button style="width: 40%;" color="danger" (click)="rEmail()">Reenviar</ion-button>
+
+     </div>
+
+    </div>
+
+  </div>
+
+
+</ion-content>

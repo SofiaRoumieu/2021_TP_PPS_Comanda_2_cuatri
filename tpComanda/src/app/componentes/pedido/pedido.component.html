@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start" (click)='closeModal()'>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title text-center>Pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Su pedido</ion-list-header>
+    <ion-item *ngFor="let plato of pedido">
+      <ion-avatar slot="start">
+        <img src={{plato.img1}}>
+      </ion-avatar>
+      <ion-label>
+        <h3>{{plato.nombre}}</h3>
+        <p>{{plato.descripcion}}</p>
+        <p>${{plato.precio}}</p>
+      </ion-label>
+      <ion-button color="danger" (click)='sacar(plato)'><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div style="display: flex; flex-direction: row; justify-content: center; width: 100%; margin-top: 2rem;" >
+    <ion-button color="primary" (click)='pedir()'>Confirmar pedido</ion-button>
+
+  </div>
+</ion-content>

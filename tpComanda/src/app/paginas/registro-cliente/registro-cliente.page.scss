@@ -1,0 +1,40 @@
+.example-header-image {
+  background-size: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-content {
+  margin: 2em auto;
+  text-align: center;
+}
+.fondo {
+  --background: white;
+}
+
+.tarj {
+  margin-top: 5rem;
+  --background: black;
+  -webkit-box-shadow: 10px 26px 55px -16px rgba(13, 13, 13, 1);
+  -moz-box-shadow: 10px 26px 55px -16px rgba(13, 13, 13, 1);
+  box-shadow: 10px 26px 55px -16px rgba(13, 13, 13, 1);
+  margin-bottom: 5rem;
+}
+
+ion-content ion-toolbar {
+  border-radius: 10px;
+  width: 88%;
+  text-align: center;
+  margin: auto;
+  padding: 19px;
+
+  // margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  --background: rgb(192, 190, 190);
+}

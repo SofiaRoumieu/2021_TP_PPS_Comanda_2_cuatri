@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar  color='primary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Registro Mesa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:white">
+  <ion-toolbar class="tarj" style="--background:black;">
+    <ion-title>Mesa</ion-title>
+    <br>
+    <form [formGroup]="form" >
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Numero</ion-label>
+        <ion-input type="number" formControlName="numero"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Cantidad Comenzales</ion-label>
+        <ion-input type="number" formControlName="cantidad"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Tipo</ion-label>
+        <ion-input type="text" formControlName="tipo"></ion-input>
+      </ion-item>
+      <br>
+      <!-- <ion-item class="full-width-input">
+        <ion-label position='floating'>Perfil</ion-label>
+        <ion-select formControlName="perfil">
+          <ion-select-option *ngFor="let usuario of usuarios" [value]="usuario.value">
+            {{usuario.viewValue}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <br> -->
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Foto</ion-label>
+        <ion-input type="text" formControlName="img"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button style="width: 50%;" [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando"  (click)="crear()">Crear</ion-button>
+      <!-- <ion-button [hidden]="!ocultarVerificar" color="secondary" *ngIf="logeando"  (click)="Entrar()"><i class="fa fa-spinner fa-spin"></i> Ingresando</ion-button> -->
+
+    </form>
+  </ion-toolbar>
+</ion-content>

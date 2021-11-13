@@ -1,0 +1,32 @@
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+
+.example-header-image {
+  background-size: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fondo {
+  margin: 2em auto;
+  text-align: center;
+  --background: url("../../../assets/img/fondoHome.jpg");
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+ion-content ion-toolbar {
+  border-radius: 10px;
+  width: 88%;
+  text-align: center;
+  margin: auto;
+  padding: 19px;
+
+  // margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  --background: black;
+}
