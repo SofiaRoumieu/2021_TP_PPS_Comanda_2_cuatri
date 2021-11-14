@@ -10,6 +10,10 @@ Integrantes:
 - Rojas Joaquin, Beta.
 - Sopelana Marcos, Gama. 
 
+Utilizaremos los siguientes Branches:
+Roumieu, branch Sofia.
+Rojas, branch Rojas.
+Sopelana, branch Marcos.
 
 
 # Reparto de Tareas
