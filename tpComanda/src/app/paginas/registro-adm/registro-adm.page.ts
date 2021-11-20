@@ -45,7 +45,7 @@ export class RegistroAdmPage implements OnInit {
       dni: ['', Validators.required],
       cuil: ['', Validators.required],
       perfil: ['', Validators.required],
-      img: ['', Validators.required]
+      img: ['']
     });
   }
 

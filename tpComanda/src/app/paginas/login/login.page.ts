@@ -128,8 +128,6 @@ export class LoginPage implements OnInit {
         break;
       case 'Cliente' :
         this.form.setValue({
-          // mail: "cliente@mail.com",
-          // clave: "123456"
           mail: 'espositojoaquin1998@gmail.com',
           clave: '1234567'
         });

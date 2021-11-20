@@ -13,11 +13,19 @@ export const environment = {
 };
 export const firebaseConfig = {
   apiKey: 'AIzaSyBIpDxnNQciKP32Ujb6AJzId51Sx4V1h8I',
+    authDomain: 'comanda-pps-38e32.firebaseapp.com',
+    databaseURL: 'https://comanda-pps-38e32.firebaseio.com/',
+    projectId: 'comanda-pps-38e32',
+    storageBucket: 'comanda-pps-38e32.appspot.com',
+    messagingSenderId: '1098656356837',
+    appId: '1:1098656356837:web:2e4cd96b5a083cb7eaf70c',
+    measurementId: 'G-ZXSNL5ETW5'
+  /*apiKey: 'AIzaSyBIpDxnNQciKP32Ujb6AJzId51Sx4V1h8I',
   authDomain: 'comanda-pps-38e32.firebaseapp.com',
   databaseURL: 'https://comanda-pps-38e32.firebaseio.com/',
   projectId: 'comanda-pps-38e32',
   storageBucket: 'comanda-pps-38e32.appspot.com',
   messagingSenderId: '1098656356837',
   appId: '1:1098656356837:web:2e4cd96b5a083cb7eaf70c',
-  measurementId: 'G-ZXSNL5ETW5'
+  measurementId: 'G-ZXSNL5ETW5'*/
 };

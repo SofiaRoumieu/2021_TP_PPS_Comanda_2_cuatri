@@ -62,7 +62,7 @@
       <br>
       <ion-button style="width: 50%;" color='secondary' (click)="tomarFoto()">Foto</ion-button>
       <br>
-      <ion-button style="width: 50%;" [disabled]="!form.value.img" [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando"  (click)="crear()">Entrar</ion-button>
+      <ion-button style="width: 50%;"  [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando"  (click)="crear()">Entrar</ion-button>
       <!-- <ion-button [hidden]="!ocultarVerificar" color="secondary" *ngIf="logeando"  (click)="Entrar()"><i class="fa fa-spinner fa-spin"></i> Ingresando</ion-button> -->
 
     </form>

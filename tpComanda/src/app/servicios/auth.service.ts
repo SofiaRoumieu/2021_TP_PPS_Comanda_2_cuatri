@@ -31,6 +31,7 @@ export class AuthService {
   }
 
   register(email: string, password: string, usuario: any) {
+    
     return new Promise ((resolve, rejects) => {
       this.angularFireAuth.createUserWithEmailAndPassword(email, password).then((result) => {
         this.router.navigate(['/verificacion']);
@@ -79,6 +80,8 @@ export class AuthService {
   }
 
    getCurrentUserMail(){
+     console.log("usuario actual:::");
+     console.log(this.angularFireAuth.currentUser);
     return this.angularFireAuth.currentUser;
   }
 
@@ -137,7 +140,7 @@ export class AuthService {
         to:token,
     };
     // eslint-disable-next-line max-len
-    const toke='AAAA_80FmeU:APA91bGUBHOqlTtiMO7VkRKrN9oLa8jPFh8a4MjC0T9TWIFg1CQjoYqDlzQ_CaiERFcoTsAVawTFdsmz4pBIXl5z9eDBNPlxTDB9Au_YUU1ANICambSYjjqWG43--nxogXrb7hWLAMpQ';
+    const toke='finyYeQMS1ipMnmBKmZCJ_:APA91bF2_lXio3SQunfnZm9EXyohHQDyT8mKMCOGm8DdvPdZF7UzHB0Kqf4GxuWuEj9YvZ00yxcxDO8WtUDWZSW80QKGxcpxVQKDpwFVMH7nGx0cjOLmjCjqdWg3wwDO0AW62y0FlMkQ';
     const headers = {
       headers:{
         // eslint-disable-next-line @typescript-eslint/naming-convention

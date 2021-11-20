@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
-//import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -18,10 +17,6 @@ export class FotoService {
     correctOrientation: true
   };
 
-  // imagePickerOptions: ImagePickerOptions = {
-  //   quality: 50,
-  //   outputType: 1
-  // };
 
   constructor(
     private dataServ: StorageService,
@@ -39,18 +34,6 @@ export class FotoService {
         return error;
       });
   }
-
-  // choosePhoto() {
-  //   return this.imagePicker.getPictures(this.imagePickerOptions)
-  //     .then(res => {
-  //       console.log(res);
-  //       return res;
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //       return error;
-  //     });
-  // }
 
   uploadPhoto(info, usuario) {
     return new Promise ((resolve, rejects) => {

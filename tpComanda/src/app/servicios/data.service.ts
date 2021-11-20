@@ -106,8 +106,10 @@ export class DataService {
   }
 
   getUserByUid(uid: string) {
+
     return this.dbUsersRef.doc(uid).valueChanges();
   }
+
 
   getUserUid()
   {
@@ -123,8 +125,6 @@ export class DataService {
             }
         });
       });
-
-
   }
 
   public crearConUID(path: string, objeto: any, userUid: string) {

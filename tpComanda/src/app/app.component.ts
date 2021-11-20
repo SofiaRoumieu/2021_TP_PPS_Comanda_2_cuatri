@@ -35,6 +35,7 @@ export class AppComponent  implements OnInit{
   }
 
   initializeApp() {
+    console.log("holaa initializeApp");
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -68,7 +69,7 @@ export class AppComponent  implements OnInit{
   addListeners(){
     PushNotifications.addListener('registration',
     (token: Token) => {
-      // alert('Push registration success, token: ' + token.value);
+       alert('Push registration success, token: ' + token.value);
       console.log('Push registration success, token: ');
       console.log(token.value);
       console.log('envio de notificacion');
