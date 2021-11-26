@@ -73,3 +73,41 @@ Sopelana, branch Marcos.
 - Juego de descuento -Rojas
 - Corrección estilo menu pedido - Roumieu
 
+
+# Códigos QR
+
+- Ingreso
+ ![image](https://user-images.githubusercontent.com/26911197/143518174-36446c23-7346-4350-bcf5-7df4db6cf655.png)
+
+- Mesas
+- - Mesa 1
+![image](https://user-images.githubusercontent.com/26911197/143518264-f4b2570b-4533-4532-aa9d-17f515d5cd45.png)
+
+- - Mesa 2
+![image](https://user-images.githubusercontent.com/26911197/143518282-1cafdf2a-2365-41da-babf-c1e13c33da59.png)
+
+- - Mesa 3
+![image](https://user-images.githubusercontent.com/26911197/143518315-74aa46c8-4a89-428d-9b72-d9935ee23360.png)
+
+- - Mesa 4
+![image](https://user-images.githubusercontent.com/26911197/143518339-2cd7c2eb-81a0-4894-87d2-4e408301fb0b.png)
+
+- - Mesa 5
+![image](https://user-images.githubusercontent.com/26911197/143518369-f948fbc8-181e-4dab-a8de-d2c96842c1e2.png)
+
+- Propinas
+- - Muy buena
+![image](https://user-images.githubusercontent.com/26911197/143518599-9fc9d98f-9a38-455d-b09c-eba463093beb.png)
+
+- - Buena
+![image](https://user-images.githubusercontent.com/26911197/143518645-33f8e070-761a-4c5d-ba5f-e4f112044beb.png)
+
+- - Regular
+![image](https://user-images.githubusercontent.com/26911197/143518675-c13e2f9a-c1f6-4293-bcff-e37e8bf11cdd.png)
+
+- - Sin propina
+![image](https://user-images.githubusercontent.com/26911197/143518688-051c90eb-ada2-447a-9173-bc1e82c25f9a.png)
+
+
+
+
