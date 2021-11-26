@@ -31,14 +31,12 @@ export class ListaPedidosPage implements OnInit {
       if (index > -1) {
         this.lista.splice(index, 1);
       }
-        // eslint-disable-next-line max-len
-        this.auth.registrar('finyYeQMS1ipMnmBKmZCJ_:APA91bF2_lXio3SQunfnZm9EXyohHQDyT8mKMCOGm8DdvPdZF7UzHB0Kqf4GxuWuEj9YvZ00yxcxDO8WtUDWZSW80QKGxcpxVQKDpwFVMH7nGx0cjOLmjCjqdWg3wwDO0AW62y0FlMkQ',
+        this.auth.registrar('4aeca4d9-64e7-43f1-986f-f84b301c36c9',
         'Nueva Comida', 'Solicita la  mesa N° '+ item.mesa,
         'https://images.clarin.com/2019/11/27/las-minutas-son-la-opcion___9YsE7sRJ_340x340__1.jpg').toPromise().then(ress =>{
           console.log(ress);
         });
-        // eslint-disable-next-line max-len
-        this.auth.registrar('finyYeQMS1ipMnmBKmZCJ_:APA91bF2_lXio3SQunfnZm9EXyohHQDyT8mKMCOGm8DdvPdZF7UzHB0Kqf4GxuWuEj9YvZ00yxcxDO8WtUDWZSW80QKGxcpxVQKDpwFVMH7nGx0cjOLmjCjqdWg3wwDO0AW62y0FlMkQ',
+        this.auth.registrar('4aeca4d9-64e7-43f1-986f-f84b301c36c9',
         'Nuevo Bebida',
         'Solicita la  mesa N° '+ item.mesa,
         'https://mercedesya.com/mya2018/images/biblioteca/800/00005362.jpg').toPromise().then(ress =>{

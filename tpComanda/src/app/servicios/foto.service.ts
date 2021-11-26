@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
+//import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -17,6 +18,10 @@ export class FotoService {
     correctOrientation: true
   };
 
+  // imagePickerOptions: ImagePickerOptions = {
+  //   quality: 50,
+  //   outputType: 1
+  // };
 
   constructor(
     private dataServ: StorageService,
@@ -34,6 +39,18 @@ export class FotoService {
         return error;
       });
   }
+
+  // choosePhoto() {
+  //   return this.imagePicker.getPictures(this.imagePickerOptions)
+  //     .then(res => {
+  //       console.log(res);
+  //       return res;
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //       return error;
+  //     });
+  // }
 
   uploadPhoto(info, usuario) {
     return new Promise ((resolve, rejects) => {
@@ -56,6 +73,20 @@ export class FotoService {
         res.ref.getDownloadURL()
           .then(url => {
             this.dataServ.storeInfoDatabaseComida(res.metadata, url, comida);
+            resolve(url);
+          })
+          .catch((err) => rejects(err));
+      });
+    });
+  }
+
+  uploadPhotoEncuesta(info, encuesta) {
+    return new Promise ((resolve, rejects) => {
+      this.dataServ.uploadToStorage(info)
+      .then(res => {
+        res.ref.getDownloadURL()
+          .then(url => {
+            this.dataServ.storeInfoDatabaseEncuesta(res.metadata, url, encuesta);
             resolve(url);
           })
           .catch((err) => rejects(err));

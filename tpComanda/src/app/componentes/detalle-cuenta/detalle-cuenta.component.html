@@ -18,12 +18,16 @@
           <form [formGroup]="form" >
             <ion-item class="full-width-input">
               <ion-label position='floating'>Atencion</ion-label>
+              <!--
               <ion-select formControlName="atencion" (ionChange)="subtotal()">
-                <!-- (selectionChange)="seleccionUsuario()" -->
+                 (selectionChange)="seleccionUsuario()"
                 <ion-select-option *ngFor="let atencion of atenciones" [value]="atencion.value">
                   {{atencion.viewValue}}
                 </ion-select-option>
+
               </ion-select>
+              -->
+              <ion-button (click)="medirAtencion()" class="btn btn-warning btn-lg" >ATENCION?</ion-button>
             </ion-item>
           </form>
           <ion-item-divider></ion-item-divider>

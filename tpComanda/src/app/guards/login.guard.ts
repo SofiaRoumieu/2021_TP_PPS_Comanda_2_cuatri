@@ -17,18 +17,15 @@ export class LoginGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log("llega al guard");
       return new Promise((resolve,rejects )=>{
             this.auth.getCurrentUserMail().then(res => {
               if( res!==undefined)
               {
-                console.log(res.uid);
               // return true;
                 let usuario;
                 this.data.getUserByUid(res.uid).subscribe(us =>{
                     usuario = us;
                     console.log(usuario);
-
                     if(usuario.perfil === 'Cliente')
                     {
                         if(res.emailVerified)

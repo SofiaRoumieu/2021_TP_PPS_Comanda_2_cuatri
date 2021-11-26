@@ -1,3 +1,7 @@
+@import "~bootswatch/dist/Materia/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/Materia/bootswatch";
+
 #container {
   text-align: center;
 
@@ -65,4 +69,13 @@
   font-size: 1rem;
   font-weight: 800;
   font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.fondoEncuestas {
+  border-radius: 15px;
+  background-color: white;
+}
+.nombre {
+  color: red;
+  font-weight: bold;
 }

@@ -40,8 +40,7 @@ export class ListaPedidosCocinaPage implements OnInit {
   tomarPedidoCocina(item) {
     this.pedidoService.updateEstadoCocina(item.uid, 1).then(res =>{
       this.toas.success('Se ha entregado la comida');
-      // eslint-disable-next-line max-len
-      this.auth.registrar('finyYeQMS1ipMnmBKmZCJ_:APA91bF2_lXio3SQunfnZm9EXyohHQDyT8mKMCOGm8DdvPdZF7UzHB0Kqf4GxuWuEj9YvZ00yxcxDO8WtUDWZSW80QKGxcpxVQKDpwFVMH7nGx0cjOLmjCjqdWg3wwDO0AW62y0FlMkQ',
+      this.auth.registrar('4aeca4d9-64e7-43f1-986f-f84b301c36c9',
       'Cocina Notifica',
       'Pedido de mesa N° '+ item.usuario.mesa.numero +
       'listo" ,"https://images.clarin.com/2019/11/27/las-minutas-son-la-opcion___9YsE7sRJ_340x340__1.jpg').toPromise().then(ress =>{
@@ -62,8 +61,7 @@ export class ListaPedidosCocinaPage implements OnInit {
   tomarPedidoBar(item) {
     this.pedidoService.updateEstadoBar(item.uid, 1).then(res =>{
       this.toas.success('Se ha entregado la bebida');
-      // eslint-disable-next-line max-len
-      this.auth.registrar('finyYeQMS1ipMnmBKmZCJ_:APA91bF2_lXio3SQunfnZm9EXyohHQDyT8mKMCOGm8DdvPdZF7UzHB0Kqf4GxuWuEj9YvZ00yxcxDO8WtUDWZSW80QKGxcpxVQKDpwFVMH7nGx0cjOLmjCjqdWg3wwDO0AW62y0FlMkQ',
+      this.auth.registrar('4aeca4d9-64e7-43f1-986f-f84b301c36c9',
       'Bar Notifica',
       'Pedido de mesa N° '+ item.usuario.mesa.numero +
       'listo',

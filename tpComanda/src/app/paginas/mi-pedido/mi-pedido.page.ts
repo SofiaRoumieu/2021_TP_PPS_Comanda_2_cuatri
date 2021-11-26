@@ -7,6 +7,7 @@ import { EncuestaComponent } from 'src/app/componentes/encuesta/encuesta.compone
 import { JuegoComponent } from 'src/app/componentes/juego/juego.component';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { DataService } from 'src/app/servicios/data.service';
+import { EncuestaService } from 'src/app/servicios/encuesta.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
 import { ToastService } from 'src/app/servicios/toast.service';
 @Component({
@@ -18,12 +19,15 @@ export class MiPedidoPage implements OnInit {
   pedido: any;
   user: any = new Usuario();
   pedidos;
+  mostrarEncuenstas:boolean=false;
+  listaEncuestas: any=[];
 
   constructor(private modal: ModalController,
               private auth: AuthService,
               private data: DataService,
               private pedidoService: PedidoService,
               private toas: ToastService,
+              private encuestas: EncuestaService,
               public router: Router) { }
 
   ngOnInit() {
@@ -47,6 +51,17 @@ export class MiPedidoPage implements OnInit {
         // });
       });
     });
+  }
+  mostremosEncuestas(){
+    this.encuestas.getPedidoUser().subscribe((encuesta: any)=>{
+      this.listaEncuestas=encuesta;
+    });
+    console.log(this.listaEncuestas);
+    this.mostrarEncuenstas=true;
+  }
+
+  volver(){
+    this.mostrarEncuenstas=false;
   }
 
   openModal(modal: string) {

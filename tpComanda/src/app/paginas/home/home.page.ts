@@ -11,17 +11,25 @@ import { DataService } from 'src/app/servicios/data.service';
 import { Usuario } from 'src/app/clases/usuario';
 
 import { ToastService } from 'src/app/servicios/toast.service';
+import { EncuestaService } from 'src/app/servicios/encuesta.service';
+import { EncuestaComponent } from 'src/app/componentes/encuesta/encuesta.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  mostrarEncuenstas=false;
   user: any = new Usuario();
+  listaEncuestas: any=[];
+  unaUnicaVez=false;
+  clienteIngreso=false;
 
+  pedido: any;
   // eslint-disable-next-line max-len
   // constructor(public router: Router,private auth:AuthService,public toasControl:ToastController, private barcodeScanner:ScanerService, private toast:ToastrService, private data:DataService) {}
+
 
   constructor(public router: Router,
               private auth: AuthService,
@@ -31,7 +39,12 @@ export class HomePage implements OnInit {
               private modal: ModalController,
               private barcodeScanner: ScanerService,
               private toast: ToastService,
-              private data: DataService) {}
+              private data: DataService,
+              private encuestas: EncuestaService) {
+                this.encuestas.getPedidoUser().subscribe((encuesta: any)=>{
+                  this.listaEncuestas=encuesta;
+                });
+              }
   // ionViewDidLoad(){
   //  this.fcm.token()
   //  this.fcm.listenToNotification().pipe(
@@ -46,8 +59,28 @@ export class HomePage implements OnInit {
   //    })
   //  )
   // }
+  volver(){
+    this.mostrarEncuenstas=false;
+  }
+  mostarPedido(encuesta: any){
+    console.log(encuesta?.pedido);
+  }
+  mostremosEncuestas(){
+    /*if(!this.unaUnicaVez){
+      const remover=this.listaEncuestas.splice(0,3);
+      console.log(remover);
+      this.unaUnicaVez=true;
+    }*/
+    console.log(this.listaEncuestas);
+    this.mostrarEncuenstas=true;
+  }
   ngOnInit(): void {
-
+    this.unaUnicaVez=false;
+    this.mostrarEncuenstas=false;
+    if(this.user.estados===1){
+      this.clienteIngreso=false;
+    }
+    console.log(this.user);
     // this.auth.getCurrentUserMail().then(res =>{
     //   this.data.getUserByUid(res.uid).subscribe(us =>{
     //     this.user = us;
@@ -115,7 +148,20 @@ export class HomePage implements OnInit {
       case 'chats':
          this.router.navigate(['/chats']);
         break;
-
+      case 'encuesta':
+        this.modal.create({
+          component: EncuestaComponent,
+          componentProps: {
+            pedido: this.user.pedido,
+            usuario: this.user
+          }
+        }).then((modald) => {
+          //abre el modal si hay por lo menos un item seleccionado
+          if(true) {
+            modald.present();
+          }
+        });
+        break;
     }
   }
 
@@ -135,8 +181,7 @@ export class HomePage implements OnInit {
   prueba()
   {
     console.log(this.auth.getCurrentUserId());
-    // eslint-disable-next-line max-len
-    this.auth.registrar('finyYeQMS1ipMnmBKmZCJ_:APA91bF2_lXio3SQunfnZm9EXyohHQDyT8mKMCOGm8DdvPdZF7UzHB0Kqf4GxuWuEj9YvZ00yxcxDO8WtUDWZSW80QKGxcpxVQKDpwFVMH7nGx0cjOLmjCjqdWg3wwDO0AW62y0FlMkQ',
+    this.auth.registrar('4aeca4d9-64e7-43f1-986f-f84b301c36c9',
     'Nuevo Cliente', this.user.mail + 'Solicita una mesa',
     'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg').toPromise().then(res =>{
     console.log(res);
@@ -145,38 +190,40 @@ export class HomePage implements OnInit {
 
   logut()
   {
+    this.mostrarEncuenstas=false;
      this.auth.logOut();
+  }
+
+  ingresarTest(){
+    //aca empieza la verdad
+    this.barcodeScanner.scan().then(
+      barcodeData =>{
+        const barcodeText=barcodeData.text;
+        if(barcodeText === 'laComanda'){
+          this.clienteIngreso=true;
+          //ponemos al usuario en lista de espera. SR 24/11
+          //this.user.estado=2;
+          this.ingresar();
+        } else{
+          this.toast.error('Error al ingresar al local, No es el QR de entrada');
+        }
+
+      },error=>{
+        this.toast.error('Hubo un error al leer el QR');
+      }
+    );
   }
 
   ingresar()
   {
-    this.barcodeScanner.scan().then(
-      barcodeData => {
-        const barcodeText = barcodeData.text;
-
-        if (barcodeText === 'laComanda') {
-          this.auth.updateEstadoUsuario(this.user.uid,2).then(res =>{
-
-            this.toast.success('Solicitud de Mesa registrada con éxito');
-            // eslint-disable-next-line max-len
-            this.auth.registrar('finyYeQMS1ipMnmBKmZCJ_:APA91bF2_lXio3SQunfnZm9EXyohHQDyT8mKMCOGm8DdvPdZF7UzHB0Kqf4GxuWuEj9YvZ00yxcxDO8WtUDWZSW80QKGxcpxVQKDpwFVMH7nGx0cjOLmjCjqdWg3wwDO0AW62y0FlMkQ'
-            ,'Nuevo Cliente', this.user.mail + 'Solicita una mesa',
-            'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg').toPromise().then(ress =>{
-              console.log(ress);
-            });
-          });
-        } else {
-          this.toast.error('Error al ingresar al local.');
-        }
-      },
-      error => {
-        // Hardcodeo
-        // this.infoReserva();
-        this.toast.error(error);
-
-        console.log('Hubo un error', error);
-      }
-    );
+    this.auth.updateEstadoUsuario(this.user.uid,2).then(res =>{
+      this.toast.success('Solicitud de Mesa registrada con éxito');
+      this.auth.registrar('4aeca4d9-64e7-43f1-986f-f84b301c36c9'
+      ,'Nuevo Cliente', this.user.mail + 'Solicita una mesa',
+      'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg').toPromise().then(ress =>{
+      console.log(ress);
+      });
+    });
   }
 
   sentarse()

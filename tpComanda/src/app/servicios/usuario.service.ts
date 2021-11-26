@@ -38,6 +38,16 @@ export class UsuarioService {
     });
   }
 
+  async getUserByMail(email: string) {
+
+    let usrsRef = await this.db.collection('usuarios').ref.where("mail", "==", email).get();
+    let listado:Array<any> = new Array<any>();
+    usrsRef.docs.map(function(x){
+        listado.push(x.data());
+    });
+    return listado;
+  }
+
   agregarPedido(usuario: string, uid: string) {
     return  this.db.collection('usuarios').doc(usuario).update({
       pedido: uid,
@@ -47,7 +57,7 @@ export class UsuarioService {
   liberarCliente(usuario: string) {
     console.log('llega');
     return  this.db.collection('usuarios').doc(usuario).update({
-      estado: 9,
+      estado: 1,
       mesa: '',
       pedido: ''
     });

@@ -7,33 +7,95 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="--background:white">
+<ion-content style="--background:url('../../../assets/img/fondoHome.jpg')">
   <div class="centrar">
 
-    <ion-toolbar  class="centrar" style="margin-top: 9rem; --background:black; margin-bottom: 7rem; width: 80%; padding: 1rem;">
+    <ion-toolbar  class="centrar" style="margin-top: 9rem; --background:rgb(255, 255, 255); margin-bottom: 7rem; width: 80%; padding: 1rem;">
       <ion-title style="text-align: center;">Datos</ion-title>
       <br>
       <form [formGroup]="form" >
-        <ion-item class="full-width-input">
-          <ion-label position='floating'>Atencion</ion-label>
+
+        <!--<ion-item class="full-width-input">
+          <ion-label position='floating'>Atención del mozo</ion-label>
           <ion-input type="text" formControlName="atencion"></ion-input>
-        </ion-item>
+        </ion-item>-->
+
+        <ion-list >
+          <ion-radio-group formControlName="atencion" >
+            <ion-list-header>
+              <ion-label><h5>¿El mozo fue amable?</h5></ion-label>
+            </ion-list-header>
+            <ion-item >
+              <ion-label>Si</ion-label>
+              <ion-radio value="Si"></ion-radio>
+            </ion-item>
+            <ion-item >
+              <ion-label>No</ion-label>
+              <ion-radio value="No"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
         <br>
-        <ion-item class="full-width-input">
+
+        <!--<ion-item class="full-width-input">
           <ion-label position='floating'>Comida</ion-label>
           <ion-input type="text" formControlName="comida"></ion-input>
+        </ion-item>-->
+
+        <ion-item color="input">
+          <ion-label position="stacked" style="padding: 3px 0px"
+            >¿Cuánto te gustó la comida?</ion-label
+          >
+          <ion-range min="1" max="5" color="secondary" formControlName="comida">
+          </ion-range>
+          <p >{{form.get('comida').value}}</p>
         </ion-item>
-        <br>
+
+        <ion-item color="input">
+          <ion-label>¿Volverías?</ion-label>
+          <ion-checkbox slot="end" formControlName="volveria"></ion-checkbox>
+        </ion-item>
+        <!--<br>
         <ion-item class="full-width-input">
           <ion-label position='floating'>Bebida</ion-label>
           <ion-input type="text" formControlName="bebida"></ion-input>
-        </ion-item>
+        </ion-item>-->
         <br>
+
         <ion-item class="full-width-input">
           <ion-label position='floating'>Consejo</ion-label>
           <ion-input type="text" formControlName="consejo"></ion-input>
         </ion-item>
         <br>
+
+        <ion-item color="input">
+          <ion-label position="stacked"
+            >Adjuntá fotos
+            <!--<p *ngIf="fotoUrl.length > 0">
+              (Tocá un imagen para eliminarla )
+            </p>--></ion-label
+          >
+    
+          <ion-row>
+           <!-- <ion-col
+              size="4"
+              *ngFor="let item of fotoUrl; let i=index"
+              (click)="deleteFoto(i)"
+            >
+              <ion-img [src]="item"></ion-img>
+            </ion-col>-->
+    
+            <ion-col
+              [size]="'12'"
+              
+            ><!--[size]="fotoUrl.length == 0 ? '12': '4'" *ngIf="fotoUrl.length < 3"-->
+              <ion-fab-button (click)="getFoto()" color="secondary">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-fab-button>
+            </ion-col>
+          </ion-row>
+        </ion-item>
 
 
         <div class="centrar">

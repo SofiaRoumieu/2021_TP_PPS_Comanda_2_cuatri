@@ -7,16 +7,15 @@ import { UsuarioService } from './usuario.service';
 import { DataService } from './data.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastService } from './toast.service';
-
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  [x: string]: any;
+ [x: string]: any;
   usuarioaux = null;
-
-  rutaNotification = 'https://fcm.googleapis.com/fcm/send';
+  userId: any ='';
+  rutaNotification = 'https://onesignal.com/api/v1/notifications';
   constructor(
     private router: Router,
     private usuarioService: UsuarioService,
@@ -24,14 +23,14 @@ export class AuthService {
     public angularFireAuth: AngularFireAuth,
     private db: AngularFirestore,
     private http: HttpClient,
-    private dataService: DataService) {}
+    private dataService: DataService,
+    private oneSignal: OneSignal) {}
 
   async sendVerificationEmail(): Promise<void> {
     return (await this.angularFireAuth.currentUser).sendEmailVerification();
   }
 
   register(email: string, password: string, usuario: any) {
-    
     return new Promise ((resolve, rejects) => {
       this.angularFireAuth.createUserWithEmailAndPassword(email, password).then((result) => {
         this.router.navigate(['/verificacion']);
@@ -39,7 +38,7 @@ export class AuthService {
         this.sendVerificationEmail().then(res =>{
         this.toast.success('Se ha enviado un correo de verificación a la casilla especificada');
        }).catch(error =>{
-         this.toast.error('Ocurrió un errro a la hora de enviar el correo');
+         this.toast.error('Ocurrió un error a la hora de enviar el correo');
        });
 
         this.usuarioService.crearUsuario(usuario, result.user.uid);
@@ -50,9 +49,11 @@ export class AuthService {
   }
 
   login(email: string, password: string){
+    console.log('email:: '+email + 'pass: '+ password);
     return new Promise ((resolve, rejects) => {
       this.angularFireAuth.signInWithEmailAndPassword(email, password).then(user => {
         const doc = user.user;
+        console.log(user);
         //consigue el usuario logeado
         // this.getUser(doc.uid);
         resolve(user);
@@ -80,8 +81,6 @@ export class AuthService {
   }
 
    getCurrentUserMail(){
-     console.log("usuario actual:::");
-     console.log(this.angularFireAuth.currentUser);
     return this.angularFireAuth.currentUser;
   }
 
@@ -114,6 +113,7 @@ export class AuthService {
 
   updateEstadoMesa(mesa: any,estados: number)
   {
+    console.log("entra a updateEstadoMesa");
     return  this.db.collection('mesas1').doc(mesa).update({
       estado: estados,
     });
@@ -124,6 +124,30 @@ export class AuthService {
     console.log('dale que tiene que llegar');
   }
 
+
+  configuracionInicial(){
+    this.oneSignal.startInit('75b1209c-4995-41ac-82bd-204d7a43aabe', '405160906151');
+
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+
+     this.oneSignal.handleNotificationReceived().subscribe((noti) => {
+ // do something when notification is received
+      console.log('notificaicon Recibida',noti);
+
+  });
+
+  this.oneSignal.handleNotificationOpened().subscribe((noti) => {
+  // do something when a notification is opened
+    console.log('notificacion abierta',noti);
+  });
+  this.oneSignal.getIds().then(info=>{
+    this.userId=info.userId;
+    console.log(this.userId);
+  });
+  this.oneSignal.endInit();
+  }
+
+
   registrar(token: any,titles: string,cuerpo: string,images?: string) {
 
     console.log('hola');
@@ -132,23 +156,32 @@ export class AuthService {
       body: "Funciona piola perri"
       }*/
     const body ={
-        notification:{
-            title: titles,
-            body: cuerpo,
-            image:images,
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        app_id:'75b1209c-4995-41ac-82bd-204d7a43aabe',
+        contents:{
+            en: cuerpo,
+            es: cuerpo,
         },
-        to:token,
+        headings:{
+          en:titles,
+          es:titles
+        },
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        include_player_ids:[token],
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        big_picture:images
     };
-    // eslint-disable-next-line max-len
-    const toke='finyYeQMS1ipMnmBKmZCJ_:APA91bF2_lXio3SQunfnZm9EXyohHQDyT8mKMCOGm8DdvPdZF7UzHB0Kqf4GxuWuEj9YvZ00yxcxDO8WtUDWZSW80QKGxcpxVQKDpwFVMH7nGx0cjOLmjCjqdWg3wwDO0AW62y0FlMkQ';
+    //token de la api
+    const toke='ZGQzNzVkMGMtZjYyNS00OWRlLWEwMWQtNGQxYjg2YmFlNGVj';
     const headers = {
       headers:{
         // eslint-disable-next-line @typescript-eslint/naming-convention
-        Authorization: 'Bearer ' + toke
+        Authorization: 'Basic ' + toke
       }
     };
     return this.http.post(this.rutaNotification,body,headers);
   }
+
   getUser(uid: string) {
     this.dataService.getaux().subscribe(res => {
       this.usuarioaux = res.filter(x => x.uid === uid);

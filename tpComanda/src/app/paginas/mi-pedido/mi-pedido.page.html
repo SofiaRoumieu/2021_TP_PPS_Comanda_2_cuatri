@@ -10,7 +10,7 @@
 <ion-content style=" --background:white;">
   <ion-card *ngIf="pedido">
     <ion-item-group style="margin-top: 1rem; margin-bottom: 4rem;">
-      <ion-card-title style="text-align: center;"> <strong style="color: rgb(239, 255, 13);">{{pedido.estado | estado}}</strong> </ion-card-title>
+      <ion-card-title style="text-align: center;"> <strong style="color: rgb(201, 85, 8);">{{pedido.estado | estado}}</strong> </ion-card-title>
       <ion-item>
         <ion-label>Mesa N° {{pedido.mesa}}</ion-label>
       </ion-item>
@@ -42,10 +42,30 @@
       <ion-button *ngIf="pedido.estado === 3" (click)='llegoPedido(pedido)'>Llegó pedido</ion-button>
       <ion-button *ngIf="pedido.estado === 4" (click)='openModal("cuenta")'>Pedir cuenta</ion-button>
       <ion-button *ngIf="pedido.estadoEncuesta === 0 && pedido.estado === 4" (click)='openModal("encuesta")'>Encuesta</ion-button>
+      <ion-button *ngIf="pedido.estadoEncuesta === 1 && pedido.estado === 4" (click)='mostremosEncuestas()'>Ver resultados encuestas</ion-button>
       <ion-button *ngIf="pedido.descuento === 0 && pedido.estado !== 6 && pedido.estado !== 5" (click)='openModal("juego")'>Juego</ion-button>
       <ion-button *ngIf="pedido.estado === 6" (click)='salir()'>Retirarse</ion-button>
 
     </div>
+
+    <div *ngIf="mostrarEncuenstas">
+      <button type="button" class="btn btn-success" (click)="volver()">Volver A Atras</button>
+      <div class="fondoEncuestas" >
+        <h2 class="text-center mt-2 mb-2">Lista De Encuestas</h2>
+        <ul *ngFor="let encuesta of listaEncuestas">
+
+          <li> Encuesta de <span class="nombre">{{encuesta?.usuario.mail}} </span>  </li>
+            <ol>
+              <li>¿El mozo fue amable?: {{encuesta.atencion}}</li>
+              <li> ¿Cuánto te gustó la comida?: {{encuesta.comida}}/5</li>
+              <li> ¿Volverías?: {{encuesta.volveria}}</li>
+              <li> Consejo: {{encuesta.consejo}}</li>
+              <hr class="mb-2" style="height:8px; color: black; background-color: black; width:214px;" />
+            </ol>
+        </ul>
+      </div>
+    </div>
+
   </ion-card>
 
 

@@ -1,6 +1,7 @@
 import { Component ,OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+//import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { timer } from 'rxjs';
@@ -25,51 +26,60 @@ export class AppComponent  implements OnInit{
   clase = 'candado ld ld-blur-in';
 
   constructor(
+
     private platform: Platform,
-    private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private auth: AuthService,
     private roure: Router
   ) {
-    this.initializeApp();
+    //this.initializeApp();
   }
 
   initializeApp() {
-    console.log("holaa initializeApp");
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+    // this.platform.ready().then(() => {
+    //   this.statusBar.styleDefault();
+    //   SplashScreen.hide();
 
 
-      timer(6000).subscribe(() => this.showSplash = false);
-    });
+    //  // timer(5000).subscribe(() => this.showSplash = false);
+    //   setTimeout(()=>{
+    //     this.showSplash = false;
+    //     this.roure.navigateByUrl('login',{replaceUrl:true});
+
+    //   },3500);
+
+    // });
   }
 
   ngOnInit() {
-    if(this.platform.is('capacitor')){
-      console.log('Initializing HomePage');
-    // Request permission to use push notifications
-    // iOS will prompt user and return if they granted permission or not
-    // Android will just grant without prompting
-    PushNotifications.requestPermissions().then( result => {
-      if (result.receive==='granted') {
-        // Register with Apple / Google to receive push via APNS/FCM
-        PushNotifications.register();
-        this.addListeners();
-      } else {
-        // Show some error
-      }
-    });
-    }else{
-      console.log('pushNotifications.RequiestPeromission() -> no es movil');
-    }
+
+
+    this.auth.configuracionInicial();
+    // if(this.platform.is('capacitor')){
+    //   console.log('Initializing HomePage');
+    // // Request permission to use push notifications
+    // // iOS will prompt user and return if they granted permission or not
+    // // Android will just grant without prompting
+    // PushNotifications.requestPermissions().then( result => {
+    //   if (result.receive==='granted') {
+
+    //     // Register with Apple / Google to receive push via APNS/FCM
+    //     //PushNotifications.register();
+    //     //this.addListeners();
+    //   } else {
+    //     // Show some error
+    //   }
+    // });
+    // }else{
+    //   console.log('pushNotifications.RequiestPeromission() -> no es movil');
+    // }
   }
 
 
   addListeners(){
     PushNotifications.addListener('registration',
     (token: Token) => {
-       alert('Push registration success, token: ' + token.value);
+      //alert('Push registration success, token: ' + token.value);
       console.log('Push registration success, token: ');
       console.log(token.value);
       console.log('envio de notificacion');

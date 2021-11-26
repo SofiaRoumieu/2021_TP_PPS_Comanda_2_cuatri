@@ -9,6 +9,7 @@ import { MenuPageRoutingModule } from './menu-routing.module';
 import { MenuPage } from './menu.page';
 import { ImagenesComponent } from 'src/app/componentes/imagenes/imagenes.component';
 import { ConsultarMozoComponent } from 'src/app/componentes/consultar-mozo/consultar-mozo.component';
+import { TiempoEstimadoPipe } from '../../pipes/tiempo-estimado.pipe';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { ConsultarMozoComponent } from 'src/app/componentes/consultar-mozo/consu
     IonicModule,
     MenuPageRoutingModule
   ],
-  declarations: [MenuPage ,ImagenesComponent,ConsultarMozoComponent]
+  declarations: [MenuPage ,ImagenesComponent,ConsultarMozoComponent,TiempoEstimadoPipe]
 })
 export class MenuPageModule {}

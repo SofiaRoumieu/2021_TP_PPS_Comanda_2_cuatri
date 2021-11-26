@@ -66,8 +66,8 @@ export class DataService {
 
   public crear(path: string, objeto: any): Promise<DocumentReference> {
     console.log('Entro al crear');
-    console.log('path', path);
-    console.log('objeto', objeto);
+    //console.log('path', path);
+    //console.log('objeto', objeto);
     return this.db.collection(path).add(objeto);
   }
 
@@ -93,7 +93,7 @@ export class DataService {
   }
 
   borrar(path: string, doc: string): void {
-    console.log('pah', path, 'doc', doc);
+    //console.log('pah', path, 'doc', doc);
     this.db
       .collection(path)
       .doc(doc)
@@ -106,10 +106,8 @@ export class DataService {
   }
 
   getUserByUid(uid: string) {
-
     return this.dbUsersRef.doc(uid).valueChanges();
   }
-
 
   getUserUid()
   {
@@ -125,12 +123,14 @@ export class DataService {
             }
         });
       });
+
+
   }
 
   public crearConUID(path: string, objeto: any, userUid: string) {
     console.log('Entro al crear');
-    console.log('path', path);
-    console.log('objeto', objeto);
+    //console.log('path', path);
+    //console.log('objeto', objeto);
     return this.db.collection(path).add(objeto).then(res => {
       const doc = res;
       this.updateUID(path, doc.id);

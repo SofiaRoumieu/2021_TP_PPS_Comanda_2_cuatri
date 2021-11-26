@@ -40,7 +40,8 @@ export class PedidoService {
     });
   }
 
-  pedirCuenta(pedido: any, propinas: string, subtotals: number) {
+  //cambiamos el tipo de datos de propina. sofia 24/11
+  pedirCuenta(pedido: any, propinas: any, subtotals: number) {
     return  this.db.collection('pedidos').doc(pedido).update({
       estado: 5,
       propina: propinas,

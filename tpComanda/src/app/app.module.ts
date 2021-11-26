@@ -28,7 +28,7 @@ import { VerPedidoComponent } from './componentes/ver-pedido/ver-pedido.componen
 import { FcmService } from './servicios/fcm.service';
 import { environment, firebaseConfig } from 'src/environments/environment';
 import { RespuestaMozoComponent } from './componentes/respuesta-mozo/respuesta-mozo.component';
-
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,7 @@ import { RespuestaMozoComponent } from './componentes/respuesta-mozo/respuesta-m
     EncuestaComponent,
     DetalleCuentaComponent,
     VerPedidoComponent,
-    RespuestaMozoComponent,
+    RespuestaMozoComponent
   ],
   entryComponents: [PedidoComponent],
   imports: [
@@ -60,6 +60,7 @@ import { RespuestaMozoComponent } from './componentes/respuesta-mozo/respuesta-m
   providers: [
     StatusBar,
     SplashScreen,
+    OneSignal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
     Camera,

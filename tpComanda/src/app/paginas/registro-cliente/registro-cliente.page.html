@@ -25,7 +25,7 @@
         <br>
         <ion-item class="full-width-input">
           <ion-label position='floating'>DNI</ion-label>
-          <ion-input type="text" formControlName="dni"></ion-input>
+          <ion-input type="number" formControlName="dni"></ion-input>
         </ion-item>
         <br>
         <ion-item class="full-width-input">
@@ -40,7 +40,7 @@
         <br>
         <ion-item class="full-width-input">
           <ion-label position='floating'>CUIL</ion-label>
-          <ion-input type="text" formControlName="cuil"></ion-input>
+          <ion-input type="number" formControlName="cuil"></ion-input>
         </ion-item>
         <br>
         <ion-item class="full-width-input">
@@ -51,7 +51,7 @@
         <br>
 
 
-        <ion-button style="width: 50%;" [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando"  (click)="crear()">Registrarse</ion-button><!--[disabled]="!form.value.img" -->
+        <ion-button style="width: 50%;"  [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando" [disabled]="!form.valid" (click)="crear()">Registrarse</ion-button>
         <!-- <ion-button [hidden]="!ocultarVerificar" color="secondary" *ngIf="logeando"  (click)="Entrar()"><i class="fa fa-spinner fa-spin"></i> Ingresando</ion-button> -->
 
       </form>

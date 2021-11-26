@@ -20,7 +20,7 @@
         <ion-input type="password" formControlName="clave"></ion-input>
       </ion-item>
       <br>
-      <ion-button style="margin-bottom: 2rem;" [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando"  (click)="entrar()">Entrar</ion-button>
+      <ion-button style="margin-bottom: 2rem;" [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando" [disabled]="!form.valid"  (click)="entrar()">Entrar</ion-button>
       <br>
       <ion-button style="margin-bottom: 2rem;" [hidden]="ocultarVerificar"  color='secondary' *ngIf="logeando"  (click)="entrarAnonimo()">Ingresar como anonimo</ion-button>
       <!-- <ion-button [hidden]="!ocultarVerificar" color="secondary" *ngIf="logeando"  (click)="Entrar()"><i class="fa fa-spinner fa-spin"></i> Ingresando</ion-button> -->
@@ -37,10 +37,11 @@
     </ion-fab-button>
     <ion-fab-list side="top">
       <ion-fab-button color="secondary" (click)="autoLog('Mozo')">Moz</ion-fab-button>
-      <ion-fab-button color="secondary" (click)="autoLog('Admin')">Adm</ion-fab-button>
+      <ion-fab-button color="secondary" (click)="autoLog('Admin')">Dueño</ion-fab-button>
       <ion-fab-button color="secondary" (click)="autoLog('Bar')">Bar</ion-fab-button>
       <ion-fab-button color="secondary" (click)="autoLog('Cocinero')">Coci</ion-fab-button>
       <ion-fab-button color="secondary" (click)="autoLog('Cliente')">Clnt</ion-fab-button>
+      <ion-fab-button color="secondary" (click)="autoLog('Mozo')">Metre</ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>

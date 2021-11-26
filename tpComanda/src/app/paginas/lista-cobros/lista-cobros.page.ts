@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 import { DataService } from 'src/app/servicios/data.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
@@ -16,6 +17,7 @@ export class ListaCobrosPage implements OnInit {
   constructor(private dataService: DataService,
               private pedidoService: PedidoService,
               private usuarioService: UsuarioService,
+              private auth: AuthService,
               private toas: ToastService) { }
 
   ngOnInit() {
@@ -32,6 +34,12 @@ export class ListaCobrosPage implements OnInit {
         this.lista.splice(index, 1);
       }
       this.usuarioService.liberarCliente(item.usuario.uid);
+
+      this.auth.updateEstadoMesa(item.usuario.mesa.numero,0).then(res =>{
+        console.log("vuelve de updateEstadoMesa");
+      }).catch(error =>{
+        this.toas.error('ocurrió un error a la hora de asignar una mesa');
+      });
     });
   }
 

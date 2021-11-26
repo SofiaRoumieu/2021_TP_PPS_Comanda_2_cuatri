@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { PedidoService } from 'src/app/servicios/pedido.service';
 import { ToastController } from '@ionic/angular';
+import { ScanerService } from 'src/app/servicios/scaner.service';
+import { ToastService } from 'src/app/servicios/toast.service';
 @Component({
   selector: 'app-detalle-cuenta',
   templateUrl: './detalle-cuenta.component.html',
@@ -24,7 +26,9 @@ export class DetalleCuentaComponent implements OnInit {
   constructor(private pedidoService: PedidoService,
               private toas: ToastController,
               private modal: ModalController,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private barcodeScanner: ScanerService,
+              private toast: ToastService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -40,12 +44,54 @@ export class DetalleCuentaComponent implements OnInit {
   }
 
   pedirCuenta() {
+    //agregado por sofia 24/11
+    let propina=0;
+    if(this.form.value.atencion>0)
+    {
+        propina=(this.subMonto*this.form.value.atencion)/100;
+    }
 
-    this.pedidoService.pedirCuenta(this.pedido.uid, this.form.value.atencion, this.subMonto).then(res =>{
+    this.pedidoService.pedirCuenta(this.pedido.uid, propina, this.subMonto).then(res =>{
       this.presentToast('Ha pedido la cuenta');
       this.closeModal();
     });
   }
+  medirAtencion(){
+    //agregado por sofia 24/11
+    this.ingresarTest();
+  }
+
+  ingresarTest(){
+    //aca empieza la verdad
+    this.barcodeScanner.scan().then(
+      barcodeData =>{
+        const barcodeText=barcodeData.text;
+
+        switch (barcodeText) {
+          case 'Sin propina':
+            this.form.value.atencion=0;
+            break;
+          case 'Regular':
+            this.form.value.atencion=10;
+            break;
+          case 'Buena':
+            this.form.value.atencion=20;
+            break;
+          case 'Muy buena':
+            this.form.value.atencion=30;
+            break;
+          default:
+            this.toast.error('Error  No es un QR de Propina');
+            break;
+        }
+
+      },error=>{
+        this.toast.error('Hubo un error al leer el QR');
+      }
+    );
+  }
+
+
 
   subtotal() {
     this.subMonto = (this.subMontoAux + this.form.value.atencion);

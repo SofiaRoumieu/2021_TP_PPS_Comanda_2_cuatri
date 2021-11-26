@@ -15,6 +15,7 @@ export class MenuPage implements OnInit {
   listaComida;
   listaBebida;
   user: any = new Usuario();
+  tiempoEstimado=0;
   total = 0;
   items = [];
   plato: any;
@@ -27,6 +28,7 @@ export class MenuPage implements OnInit {
   ngOnInit() {
     this.dataService.getPlatos().subscribe(res => {
       this.listaComida = res.filter(ress => ress.tipo === 'Comida');
+      console.log(this.listaComida);
     });
     this.dataService.getPlatos().subscribe(res => {
       this.listaBebida = res.filter(ress => ress.tipo === 'Bebida');
@@ -42,6 +44,16 @@ export class MenuPage implements OnInit {
   agregar(plato) {
     this.items.push(plato);
     this.total += plato.precio;
+    let tiempo=10;
+    if(plato.tipo=== 'Comida'){
+      if(plato.precio==75)
+        tiempo=10;
+      else
+      tiempo=plato.precio/2;
+    }
+    if(tiempo>this.tiempoEstimado)
+      this.tiempoEstimado=tiempo;
+
   }
 
   prueba(pla: any)

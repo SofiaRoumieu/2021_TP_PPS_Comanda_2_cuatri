@@ -51,13 +51,13 @@ export class RegistroClientePage implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
       mail: ['', Validators.required],
-      clave: ['', Validators.required],
-      dni: ['', Validators.required],
-      cuil: ['', Validators.required],
-      perfil: ['', Validators.required],
+      clave: ['', [Validators.required, Validators.minLength(6)]],
+      dni: ['', [Validators.required, Validators.min(1000000), Validators.maxLength(99999999)]],
+      cuil: ['', [Validators.required, Validators.min(10000000000), Validators.max(99999999999)]],
+      perfil: [''],
       img: ['']
     });
   }
@@ -66,21 +66,21 @@ export class RegistroClientePage implements OnInit {
 
   crear(){
     let tokenA: any;
-   PushNotifications.requestPermissions().then( result => {
+    /*PushNotifications.requestPermissions().then( result => {
       if (result.receive==='granted') {
         // Register with Apple / Google to receive push via APNS/FCM
         PushNotifications.register();
       } else {
         // Show some error
       }
-    });
+    });*/
     // On success, we should be able to receive notifications
-    PushNotifications.addListener('registration',
-    (token: Token) => {
+   /* PushNotifications.addListener('registration',
+    (token: Token) => {*/
      //  alert('Push registration success, token: ' + token.value);
         console.log('Push registration success, token: ');
-        console.log(token.value);
-        tokenA = token.value;
+        //console.log(token.value);
+        tokenA ='4aeca4d9-64e7-43f1-986f-f84b301c36c9'; //token.value;
         console.log('envio de notificacion');
         console.log('llega');
         this.form.controls.perfil.setValue('Cliente');
@@ -99,11 +99,10 @@ export class RegistroClientePage implements OnInit {
         };
         if (this.form.valid) {
           this.authService.register(usuario.mail, usuario.pass, usuario).then(res => {
-              console.log("llega bien perri");
+              //console.log("llega bien perri");
               this.toas.success('Cliente registrado con éxito');
               this.authService
-              // eslint-disable-next-line max-len
-              .registrar('finyYeQMS1ipMnmBKmZCJ_:APA91bF2_lXio3SQunfnZm9EXyohHQDyT8mKMCOGm8DdvPdZF7UzHB0Kqf4GxuWuEj9YvZ00yxcxDO8WtUDWZSW80QKGxcpxVQKDpwFVMH7nGx0cjOLmjCjqdWg3wwDO0AW62y0FlMkQ',
+              .registrar('4aeca4d9-64e7-43f1-986f-f84b301c36c9',
               'Nuevo usuario',
               'Confirmar Usuario',
               usuario.img).toPromise().then(ress =>{
@@ -116,8 +115,8 @@ export class RegistroClientePage implements OnInit {
         {
           this.toas.error('Datos inválidos');
         }
-      }
-    );
+      //}
+    //);
   }
 
   seleccionUsuario() {

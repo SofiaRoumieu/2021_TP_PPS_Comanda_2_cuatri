@@ -9,15 +9,15 @@ export class EncuestaService {
   dbEncuestasRef: AngularFirestoreCollection<any>;
   constructor(private db: AngularFirestore,
               private pedidoService: PedidoService) {
-    this.dbEncuestasRef = this.db.collection('encuestas');
+    this.dbEncuestasRef = this.db.collection('encuestasBis');
   }
 
   public crearConUid(objeto: any, pedidoUid: string) {
     console.log('Entro al crear encuesta');
     console.log('objeto', objeto);
-    return this.db.collection('encuestas').add(objeto).then(res => {
+    return this.db.collection('encuestasBis').add(objeto).then(res => {
       const doc = res;
-      this.updateUID('encuestas', doc.id);
+      this.updateUID('encuestasBis', doc.id);
       objeto.uid = doc.id;
       this.pedidoService.agregarEncuesta(pedidoUid, objeto);
     });
@@ -30,7 +30,8 @@ export class EncuestaService {
   }
 
   getPedidoUser() {
-    return this.db.collection('encuestas').valueChanges();
+    console.log("viene a buscar encuestas");
+    return this.db.collection('encuestasBis').valueChanges();
   }
 
   getPedido(uid: string) {

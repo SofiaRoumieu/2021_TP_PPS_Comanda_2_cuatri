@@ -1,20 +1,12 @@
 {
 	"appId": "com.comandaionic.tpcomandaapp",
 	"appName": "TpComandaApp",
-	"webDir": "www",
 	"bundledWebRuntime": false,
 	"npmClient": "npm",
+	"webDir": "www",
 	"plugins": {
 		"SplashScreen": {
-			"launchShowDuration": 1000,
-			"FadeSplashScreen": false
-		},
-		"PushNotifications": {
-			"presentationOptions": [
-				"badge",
-				"sound",
-				"alert"
-			]
+			"launchShowDuration": 3000
 		}
 	},
 	"cordova": {}

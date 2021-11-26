@@ -18,6 +18,7 @@
         <h3>{{comida.nombre}}</h3>
         <p>{{comida.descripcion}}</p>
         <p>${{comida.precio}}</p>
+        <p>Aprox. {{comida.precio | tiempoEstimado}} minutos de demora</p>
       </ion-label>
       <ion-button color="success" (click)='agregar(comida)'><ion-icon name="add-circle-outline"></ion-icon></ion-button>
     </ion-item>
@@ -47,6 +48,7 @@
 
 <ion-footer class="ion-no-border">
   <ion-toolbar >
-    <ion-title (click)='openModal("pedido")'>Ver pedido - ({{items.length}}) items - Total: ${{total}}</ion-title>
+    <ion-title (click)='openModal("pedido")'>Ver pedido: {{items.length}} items - Total: ${{total}}</ion-title>
+    <ion-title>Tiempo estimado {{tiempoEstimado}} minutos</ion-title>
   </ion-toolbar>
 </ion-footer>

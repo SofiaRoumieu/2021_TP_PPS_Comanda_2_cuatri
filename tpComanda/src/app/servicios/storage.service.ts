@@ -50,4 +50,15 @@ export class StorageService {
       tipo: comida.tipo
     });
   }
+
+  storeInfoDatabaseEncuesta(metainfo, urls, encuesta) {
+    return this.dbRef.doc(this.newName).set({
+      url: urls,
+      created: metainfo.timeCreated,
+      fullPath: metainfo.fullPath,
+      contentType: metainfo.contentType,
+      nombre: encuesta.usuario.mail,
+      tipo: 'encuesta'
+    });
+  }
 }
