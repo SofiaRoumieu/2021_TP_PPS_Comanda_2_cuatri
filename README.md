@@ -54,6 +54,8 @@ Sopelana, branch Marcos.
 - Nueva página verificación de usuario -Rojas
 - Selección de pedido -Sande
 
+<strong>Observación del 4to Sprint:</strong> Con la retirada de Gama, nos vimos complicados con el trabajo en ramas, por lo cual decidimos trabajar con repositorios paralelos.
+Repositorio paralelo, del integrante Beta: https://github.com/rojasjoaquin129/ParcialPPS
 
 <strong>5to Sprint, 14/11 al 20/11</strong>
 - Lista Usuarios Pendientes -Rojas
