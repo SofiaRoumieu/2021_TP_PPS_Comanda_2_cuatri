@@ -73,6 +73,13 @@ Sopelana, branch Marcos.
 - Juego de descuento -Rojas
 - Corrección estilo menu pedido - Roumieu
 
+<strong>6to Sprint, 21/11 al 27/11</strong>
+- Encuestas al usuario -Rojas
+- Implementación de graficos para visualizar resultados de encuestas - Roumieu*
+- Corrección en logica de asignacion de mesas - Rojas*
+- Mejoras en estilos del detalle de cuenta -Roumieu
+
+
 
 # Códigos QR
 
@@ -117,6 +124,29 @@ Sopelana, branch Marcos.
 - - Sin propina
 
 ![image](https://user-images.githubusercontent.com/26911197/143518688-051c90eb-ada2-447a-9173-bc1e82c25f9a.png)
+
+
+# Capturas de pantallas principales
+
+- Pantalla de Login
+
+![image](https://user-images.githubusercontent.com/26911197/143668626-68fb73e8-61aa-425e-9b42-0cfea30bab5d.png)
+
+
+- Registro de usuario
+
+![image](https://user-images.githubusercontent.com/26911197/143668648-1c955dfa-284c-4554-8d3e-fc8ee09f9dc5.png)
+
+- Pantalla de usuario en lista de espera
+
+![image](https://user-images.githubusercontent.com/26911197/143668719-a62e4881-d9ae-44e2-8b39-8a5a83ea9006.png)
+
+- Resultados de encuestas
+
+![image](https://user-images.githubusercontent.com/26911197/143668734-af76ffab-7ab6-41ef-a836-c9438bd29d3c.png)
+
+
+
 
 
 
