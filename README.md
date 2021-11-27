@@ -141,6 +141,14 @@ Sopelana, branch Marcos.
 
 ![image](https://user-images.githubusercontent.com/26911197/143668719-a62e4881-d9ae-44e2-8b39-8a5a83ea9006.png)
 
+- Pantalla home, cocinero
+
+![image](https://user-images.githubusercontent.com/26911197/143668908-ce0c2478-eeda-42d3-be3b-3143eb12b56c.png)
+
+- Pantalla home, Bartender
+
+![image](https://user-images.githubusercontent.com/26911197/143668928-d5ef94a6-581c-4942-9bc8-6d67fa49f001.png)
+
 - Resultados de encuestas
 
 ![image](https://user-images.githubusercontent.com/26911197/143668734-af76ffab-7ab6-41ef-a836-c9438bd29d3c.png)
@@ -149,9 +157,20 @@ Sopelana, branch Marcos.
 
 ![image](https://user-images.githubusercontent.com/26911197/143668858-3dbf0471-141f-4dab-852d-5dbefc62a439.png)
 
+- Menu
 
+![WhatsApp Image 2021-11-27 at 02 13 52 (3)](https://user-images.githubusercontent.com/26911197/143669015-ccce7c14-7c73-4596-9275-22a357d75509.jpeg)
 
+- Encuesta cliente
 
+![WhatsApp Image 2021-11-27 at 02 13 52 (1)](https://user-images.githubusercontent.com/26911197/143668998-270f53bf-6f99-4721-a57c-263ccd3071b9.jpeg)
 
+-Juego para ganar descuento
+
+![WhatsApp Image 2021-11-27 at 02 13 52 (2)](https://user-images.githubusercontent.com/26911197/143669023-3e7ac4a3-d5e8-4936-966c-9facce739c97.jpeg)
+
+- Detalle de la cuenta
+
+![WhatsApp Image 2021-11-27 at 02 13 52](https://user-images.githubusercontent.com/26911197/143669035-af03a7c5-b82e-42ef-867f-957faa783640.jpeg)
 
 
