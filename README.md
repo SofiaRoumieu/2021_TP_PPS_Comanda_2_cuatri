@@ -145,6 +145,10 @@ Sopelana, branch Marcos.
 
 ![image](https://user-images.githubusercontent.com/26911197/143668734-af76ffab-7ab6-41ef-a836-c9438bd29d3c.png)
 
+- Lista de pedidos pendientes, mozo
+
+![image](https://user-images.githubusercontent.com/26911197/143668858-3dbf0471-141f-4dab-852d-5dbefc62a439.png)
+
 
 
 
